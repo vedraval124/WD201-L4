@@ -21,7 +21,7 @@ describe("Todolist Testing", () => {
     let length = all.length;
 
     add({
-      title: "node js learning",
+      title: "node js  for a learning",
 
       completed: false,
       dueDate: new Date().toLocaleDateString("en-CA"),
@@ -30,13 +30,13 @@ describe("Todolist Testing", () => {
     expect(all.length).toBe(length + 1);
   });
 
-  test("Mark as todo as a completed", () => {
+  test("Mark as todo a completed", () => {
     expect(all[0].completed).toBe(false);
     markAsComplete(0);
     expect(all[0].completed).toBe(true);
   });
 
-  test("retrive all todos that are overdue", () => {
+  test("retrive all todos  are overdue", () => {
     let listOfTodos = overdue();
 
     expect(
@@ -46,7 +46,7 @@ describe("Todolist Testing", () => {
     ).toBe(true);
   });
 
-  test("retrive all todos that are dueToday", () => {
+  test("retrive all todos are dueToday", () => {
     let listOfTodos = dueToday();
 
     expect(
@@ -56,7 +56,7 @@ describe("Todolist Testing", () => {
     ).toBe(true);
   });
 
-  test("retrive all todos that are dueLater", () => {
+  test("retrive all todos are dueLater", () => {
     let listOfTodos = dueLater();
 
     expect(
