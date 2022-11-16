@@ -1,32 +1,45 @@
 const todoList = () => {
-  all = []
- const add = (todoItem) => {
-   all.push(todoItem)
- }
- const markAsComplete = (index) => {
-   all[index].completed = true
- }
+  const all = [];
 
- const overdue = () => {
-   return all.filter((todos) => 
-     todos.dueDate == yesterday
-   )
- }
+  let today = new Date().toLocaleDateString("en-CA");
+  const add = (todoItem) => {
+    all.push(todoItem);
+  };
+  const markAsComplete = (index) => {
+    all[index].completed = true;
+  };
 
- const dueToday = () => {
-   return all.filter((todos) =>
-     todos.dueDate == today
-   )
- }
+  const overdue = () => {
+    return all.filter((io) => io.dueDate < today);
+  };
 
- const dueLater = () => {
-   return all.filter((todos) =>
-     todos.dueDate == tomorrow)
- }
+  const dueToday = () => {
+    return all.filter((io) => io.dueDate === today);
+  };
 
- function toDisplayableList(list) {
-     return list.map(todos => `${todos.completed ? `[x]` : `[ ]`} ${todos.title} ${todos.dueDate != today ?todos.dueDate:" "}`).join('\n')
- }
- return { all, add, markAsComplete, overdue, dueToday, dueLater, toDisplayableList };
-}
+  const dueLater = () => {
+    return all.filter((io) => io.dueDate > today);
+  };
+
+  const toDisplayableList = (list) => {
+    return list
+      .map(
+        (io) =>
+          `${io.completed ? `[x]` : `[ ]`} ${io.title} ${
+            io.dueDate != today ? io.dueDate : " "
+          }`
+      )
+      .join("\n");
+  };
+
+  return {
+    all,
+    add,
+    markAsComplete,
+    overdue,
+    dueToday,
+    dueLater,
+  };
+};
+
 module.exports = todoList;
